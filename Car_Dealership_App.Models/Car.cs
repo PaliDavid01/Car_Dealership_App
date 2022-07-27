@@ -24,7 +24,7 @@ namespace Car_Dealership_App.Models
         public bool Sold { get; set; }
 
         public DateTime ProductionDate { get; set; }
-
+        //public virtual CarType? CarType { get; set; }
 
         [Required]
         public int DealerID { get; set; }
@@ -34,6 +34,7 @@ namespace Car_Dealership_App.Models
         public Car()
         {
             ImgUrls = new List<string>();
+            //CarType = new CarType();
         }
 
         // Sample dataline:
@@ -50,6 +51,7 @@ namespace Car_Dealership_App.Models
             ProductionDate = DateTime.Parse(dataparts[5]);
             Id = int.Parse(dataparts[6]);
             Sold = false;
+            //CarType = new CarType();
         }
         
     }

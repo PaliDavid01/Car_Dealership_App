@@ -21,31 +21,31 @@ namespace Car_Dealership_App.Repository
             if (!builder.IsConfigured)
             {
                 string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\car.mdf;Integrated Security=True;MultipleActiveResultSets=true";
-                builder.UseSqlServer(conn);
+                builder.UseSqlServer(conn).UseLazyLoadingProxies();
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<CarDealer>(cardealer => cardealer
-            //    .HasMany<Car>().WithOne()
-            //    .HasForeignKey(cart => cart.DealerID));
+            modelBuilder.Entity<CarDealer>(cardealer => cardealer
+                .HasMany<Car>().WithOne()
+                .HasForeignKey(cart => cart.DealerID));
+            
+            modelBuilder.Entity<CarType>(cartype => cartype
+                .HasMany<Car>()
+                .WithOne()
+                .HasForeignKey(carr => carr.CTID));
 
-            //modelBuilder.Entity<CarType>(cartype => cartype
-            //    .HasMany<Car>()
-            //    .WithOne()
-            //    .HasForeignKey(carr => carr.CTID));
+            modelBuilder.Entity<Car>(car => car.
+                HasOne<CarDealer>()
+                .WithMany(cars => cars.Cars)
+                .HasForeignKey(card => card.DealerID)
+                .OnDelete(DeleteBehavior.Cascade));
 
-            //modelBuilder.Entity<Car>(car => car.
-            //    HasOne<CarDealer>()
-            //    .WithMany()
-            //    .HasForeignKey(card => card.DealerID)
-            //    .OnDelete(DeleteBehavior.Cascade));
-
-            //modelBuilder.Entity<Car>(car => car
-            //    .HasOne<CarType>()
-            //    .WithMany()
-            //    .HasForeignKey(card => card.CTID));
+            modelBuilder.Entity<Car>(car => car
+                .HasOne<CarType>()
+                .WithMany()
+                .HasForeignKey(card => card.CTID));
 
             modelBuilder.Entity<CarType>().HasData(new CarType[] 
                 {
@@ -57,14 +57,14 @@ namespace Car_Dealership_App.Repository
                     new CarType("5#Mercedes#G-500#Gas#4996#450")
                     
                 });
-
+            
             modelBuilder.Entity<CarDealer>().HasData(new CarDealer[] 
                 {            
                             //DealerID#PostalCode#Name#City#Streer#HouseNum
                     new CarDealer("1#5600#Mike-Car#Mezőtúr#Puskin#109"), 
                     new CarDealer("2#1204#Csilag_Car#Budapest#Felszabadulás#33"), 
                     new CarDealer("3#1540#Mercedes-Hovány#Kecskemét#Petőfi#2"), 
-                    new CarDealer("4#4500##Dunaharaszti#Lenin#8") 
+                    new CarDealer("4#4500#Tulipán_Autóker#Dunaharaszti#Lenin#8") 
             
                 });
 
@@ -72,13 +72,14 @@ namespace Car_Dealership_App.Repository
                 {
                     //CarTypeID#DealerID#Km#Price#CCM#HP#ProductionYear-Month#ID
                     new Car("1#1#117067#2000#pink#2017-4#1"),
-                    new Car("3#5#317067#3000#red#2022-6#2"),
+                    new Car("3#4#317067#3000#red#2022-6#2"),
                     new Car("4#3#417067#6000#red#2004-9#3"),
                     new Car("1#4#17067#17000#red#1980-7#4"),
-                    new Car("2#2#117067#2000#blue#2010-6#5"),
+                    new Car("4#2#117067#2000#blue#2010-6#5"),
                     new Car("2#4#11706#19000#red#1980-12#6"),
 
-                });
+                }) ;
+            
         }
     }
 }
