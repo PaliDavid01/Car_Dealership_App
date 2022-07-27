@@ -43,7 +43,7 @@ namespace Car_Dealership_App.Repository
                 .OnDelete(DeleteBehavior.Cascade));
 
             modelBuilder.Entity<Car>(car => car
-                .HasOne<CarType>()
+                .HasOne(carr => carr.CarType)
                 .WithMany()
                 .HasForeignKey(card => card.CTID));
 

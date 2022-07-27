@@ -24,7 +24,7 @@ namespace Car_Dealership_App.Models
         public bool Sold { get; set; }
 
         public DateTime ProductionDate { get; set; }
-        //public virtual CarType? CarType { get; set; }
+        public virtual CarType CarType { get; set; }
 
         [Required]
         public int DealerID { get; set; }
