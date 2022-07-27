@@ -1,6 +1,6 @@
 ﻿using Car_Dealership_App.Models;
 using Car_Dealership_App.Repository.BaseRepository;
-using Car_Dealership_App.Repository.DbContext;
+using Car_Dealership_App.Repository.DbContextFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace Car_Dealership_App.Repository.CustomRepos
 {
     public class CarTypeRepository : Repository<CarType>
     {
-        protected CarTypeRepository(CarDbContext context) : base(context)
+        public CarTypeRepository(CarDbContext context) : base(context)
         {
         }
 

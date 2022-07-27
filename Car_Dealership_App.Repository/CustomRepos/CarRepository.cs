@@ -1,6 +1,6 @@
 ﻿using Car_Dealership_App.Models;
 using Car_Dealership_App.Repository.BaseRepository;
-using Car_Dealership_App.Repository.DbContext;
+using Car_Dealership_App.Repository.DbContextFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Car_Dealership_App.Repository.CustomRepos
 {
-    internal class CarRepository : Repository<Car>
+    public class CarRepository : Repository<Car>
     {
         public CarRepository(CarDbContext context) : base(context)
         {

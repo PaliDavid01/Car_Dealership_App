@@ -3,7 +3,7 @@ using Car_Dealership_App.Models;
 
 namespace Logic.Interfaces
 {
-    public interface ICarDealerLogic
+    public interface CarDealerLogic
     {
         void Create(CarDealer entity);
         void Delete(int id);

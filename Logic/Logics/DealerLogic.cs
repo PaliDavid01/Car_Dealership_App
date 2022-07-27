@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Logic.Interfaces;
 
-namespace Logic.Logic
+namespace Logic.Logics
 {
-    public class DealerLogic: ICarDealerLogic
+    public class DealerLogic: CarDealerLogic
     {
         IRepository<CarDealer> repo;
         public DealerLogic(IRepository<CarDealer> repo)

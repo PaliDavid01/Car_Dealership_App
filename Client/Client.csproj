@@ -8,7 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ConsoleMenu-simple" Version="2.4.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Car_Dealership_App.Repository\Car_Dealership_App.Repository.csproj" />
+    <ProjectReference Include="..\Logic\Logic.csproj" />
   </ItemGroup>
 
 </Project>
