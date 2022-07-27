@@ -13,13 +13,13 @@ namespace Client
             CarDbContext ctx = new CarDbContext();
             var car = ctx.Cars.First();
             Console.WriteLine(car.Color);
-            var q = from x in ctx.CarDealers join y in ctx.Cars on x.DealerID equals y.DealerID select new { x, y };
+            var q = from x in ctx.CarDealers join y in ctx.Cars on x.DealerID equals y.DealerID select new {  };
             foreach (var item in ctx.CarDealers)
             {
                 Console.WriteLine(item.DealershipName);
                 foreach (var item2 in item.Cars)
                 {
-                    Console.WriteLine("\t"+item2.Color+" "+item2.Price );
+                    Console.WriteLine("\t"+item2.Color+" "+item2.Price+" "+ item2.CarType.Brand + " " + item2.CarType.Type );
                 }
             }
             Console.WriteLine("Hello GitHub!");
