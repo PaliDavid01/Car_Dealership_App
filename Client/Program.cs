@@ -22,6 +22,7 @@ namespace Client
                     Console.WriteLine("\t"+item2.Color+" "+item2.Price );
                 }
             }
+            Console.WriteLine("Hello GitHub!");
         }
     }
 }
