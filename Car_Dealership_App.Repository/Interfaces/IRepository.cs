@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Car_Dealership_App.Repository
+namespace Car_Dealership_App.Repository.Interfaces
 {
     public interface IRepository<T> where T : class
     {

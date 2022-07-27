@@ -1,11 +1,13 @@
 ﻿using Car_Dealership_App.Models;
+using Car_Dealership_App.Repository.BaseRepository;
+using Car_Dealership_App.Repository.DbContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Car_Dealership_App.Repository
+namespace Car_Dealership_App.Repository.CustomRepos
 {
     internal class CarRepository : Repository<Car>
     {

@@ -1,13 +1,15 @@
 ﻿using Car_Dealership_App.Models;
+using Car_Dealership_App.Repository.BaseRepository;
+using Car_Dealership_App.Repository.DbContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Car_Dealership_App.Repository
+namespace Car_Dealership_App.Repository.CustomRepos
 {
-    public class CarTypeRepository :  Repository<CarType>
+    public class CarTypeRepository : Repository<CarType>
     {
         protected CarTypeRepository(CarDbContext context) : base(context)
         {
@@ -21,7 +23,7 @@ namespace Car_Dealership_App.Repository
         public override void Update(CarType entity)
         {
             var old = Read(entity.CTID);
-            foreach(var prop in old.GetType().GetProperties())
+            foreach (var prop in old.GetType().GetProperties())
             {
                 prop.SetValue(old, prop.GetValue(entity));
             }

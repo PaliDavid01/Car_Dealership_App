@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Car_Dealership_App.Repository.DbContext;
+using Car_Dealership_App.Repository.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Car_Dealership_App.Repository
+namespace Car_Dealership_App.Repository.BaseRepository
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {
@@ -22,7 +24,7 @@ namespace Car_Dealership_App.Repository
         }
 
         public abstract T Read(int id);
-        
+
 
         public IQueryable<T> ReadAll()
         {
